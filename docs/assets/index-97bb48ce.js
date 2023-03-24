@@ -3510,12 +3510,9 @@ ZZV,Zanesville Municipal,Zanesville,OH,USA,39.94445833,-81.89210528
 `;
 let start = Date.now();
 let result = csvParse(airportCSVString);
+let end = Date.now();
+let msg = `Parsing CSV took ${end - start}ms for ${result.length} rows`;
+console.log(`Parsing CSV took ${end - start}ms for ${result.length} rows`);
 if (globalThis.document) {
-  document.body.textContent = `Parsing CSV took ${(Date.now() - start).toFixed(
-    2
-  )}ms for ${result.length} rows`;
-} else {
-  console.log(
-    `Parsing CSV took ${(Date.now() - start).toFixed(2)}ms for ${result.length} rows`
-  );
+  document.body.textContent = msg;
 }

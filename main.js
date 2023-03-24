@@ -1,17 +1,12 @@
-import { csvParse } from 'd3-dsv';
-import airportCSVString from './airports.js';
+import { csvParse } from "d3-dsv";
+import airportCSVString from "./airports.js";
 
 let start = Date.now();
 let result = csvParse(airportCSVString);
+let end = Date.now();
+let msg = `Parsing CSV took ${end - start}ms for ${result.length} rows`;
 
+console.log(`Parsing CSV took ${end - start}ms for ${result.length} rows`);
 if (globalThis.document) {
-  document.body.textContent = `Parsing CSV took ${(Date.now() - start).toFixed(
-    2
-  )}ms for ${result.length} rows`;
-} else {
-  console.log(
-    `Parsing CSV took ${(Date.now() - start).toFixed(2)}ms for ${
-      result.length
-    } rows`
-  );
+  document.body.textContent = msg
 }
